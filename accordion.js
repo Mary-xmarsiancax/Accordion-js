@@ -6,22 +6,50 @@ const hiddenElOne = document.getElementById("liElOne");
 const hiddenElTwo = document.getElementById("liElTwo");
 const hiddenElThree = document.getElementById("LiElThree");
 
+let isVisible1 = false
+let isVisible2 = false
+let isVisible3 = false
 
-const toShowListOne = () => {
-    hiddenElOne.classList.remove("hidden");
+const remoteHidden = (isVisible) => {
+    hiddenElOne.classList.add("hidden");
     hiddenElTwo.classList.add("hidden");
     hiddenElThree.classList.add("hidden");
+    isVisible = false
+}
+
+const toShowListOne = () => {
+    if (isVisible1 === false) {
+        hiddenElOne.classList.remove("hidden");
+        hiddenElTwo.classList.add("hidden");
+        hiddenElThree.classList.add("hidden");
+        isVisible1 = true
+    } else {
+        remoteHidden(isVisible1)
+    }
+
 };
 const toShowListTwo = () => {
-    hiddenElTwo.classList.remove("hidden");
-    hiddenElOne.classList.add("hidden");
-    hiddenElThree.classList.add("hidden");
+    if (isVisible2 === false) {
+        hiddenElTwo.classList.remove("hidden");
+        hiddenElOne.classList.add("hidden");
+        hiddenElThree.classList.add("hidden");
+        isVisible2 = true
+    } else {
+        remoteHidden(isVisible2)
+    }
+
 
 };
 const toShowListThree = () => {
-    hiddenElThree.classList.remove("hidden");
-    hiddenElOne.classList.add("hidden");
-    hiddenElTwo.classList.add("hidden");
+    if (isVisible3 === false) {
+        hiddenElThree.classList.remove("hidden");
+        hiddenElOne.classList.add("hidden");
+        hiddenElTwo.classList.add("hidden");
+        isVisible3 = true
+    } else {
+        remoteHidden(isVisible3)
+    }
+
 };
 
 clickedElOne.addEventListener("click", toShowListOne);
